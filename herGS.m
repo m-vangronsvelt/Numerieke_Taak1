@@ -6,7 +6,11 @@ function [Q,R] = herGS(A)
     R = zeros(n,n);
     for j = 1:n
         v = A(:,j);
-        for i = 1:2
+        for i = 1:(j-1)
+            R(i,j) = Q(:,i)'*A(:,j);
+            v = v - R(i,j)*Q(:,i);
+        end
+        for i = 1:(j-1)
             R(i,j) = Q(:,i)'*A(:,j);
             v = v - R(i,j)*Q(:,i);
         end
