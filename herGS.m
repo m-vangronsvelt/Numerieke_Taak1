@@ -10,8 +10,9 @@ function [Q,R] = herGS(A)
             R(i,j) = Q(:,i)'*A(:,j);
             v = v - R(i,j)*Q(:,i);
         end
+        v2 = v;
         for i = 1:(j-1)
-            R(i,j) = Q(:,i)'*A(:,j);
+            R(i,j) = Q(:,i)'*v2;
             v = v - R(i,j)*Q(:,i);
         end
         R(j,j) = norm(v);
